@@ -1,0 +1,16 @@
+{
+    "name": "dietrichxx/crud-kit",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Dietrichxx\\CrudKit\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "dima",
+            "email": "dmitriy.pidchenko@itgroup.kz"
+        }
+    ]
+}
