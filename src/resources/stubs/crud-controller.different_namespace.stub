@@ -1,0 +1,45 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ parentNamespace }};
+use {{ requestNamespace }};
+use {{ modelNamespace }};
+
+class {{ class }} extends {{ parentClass }}
+{
+    public function index({{ request }} ${{ requestVariable }})
+    {
+        //
+    }
+
+    public function create()
+    {
+        //
+    }
+
+    public function store({{ request }} ${{ requestVariable }})
+    {
+        //
+    }
+
+    public function show({{ model }} ${{ modelVariable }})
+    {
+        //
+    }
+
+    public function edit({{ model }} ${{ modelVariable }})
+    {
+        //
+    }
+
+    public function update({{ request }} ${{ requestVariable }}, {{ model }} ${{ modelVariable }})
+    {
+        //
+    }
+
+    public function destroy({{ model }} ${{ modelVariable }})
+    {
+        //
+    }
+}

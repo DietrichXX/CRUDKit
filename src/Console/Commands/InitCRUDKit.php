@@ -23,6 +23,9 @@ class InitCRUDKit extends Command
 
     protected object $crudService;
 
+    /**
+     * @param CRUDService $crudService
+     */
     public function __construct(CRUDService $crudService){
         $this->crudService = $crudService;
         parent::__construct();

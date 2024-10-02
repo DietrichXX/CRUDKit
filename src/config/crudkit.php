@@ -7,7 +7,7 @@ return [
         'controller_base_path' => '/',
         'request_base_path' => '/',
         'model_base_path' => '/',
-        'templates_path' => '/',
+        'templates_base_path' => '/',
     ],
 
     'parents' => [

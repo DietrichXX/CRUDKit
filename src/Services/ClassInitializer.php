@@ -5,17 +5,31 @@ namespace Dietrichxx\CrudKit\Services;
 use Dietrichxx\CrudKit\Exceptions\ClassExistsException;
 use Dietrichxx\CrudKit\Helpers\NamingTransformer;
 use Dietrichxx\CrudKit\Services\StubGenerators\ControllerStubGenerator;
+use Dietrichxx\CrudKit\Services\StubGenerators\ModelStubGenerator;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
 
 class ClassInitializer
 {
     protected object $controllerStubGenerator;
+    protected object $modelStubGenerator;
     protected object $namingTransformer;
     protected array $defaultPaths;
 
-    public function __construct(ControllerStubGenerator $controllerStubGenerator, NamingTransformer $namingTransformer, array $defaultPaths){
+    /**
+     * @param ControllerStubGenerator $controllerStubGenerator
+     * @param ModelStubGenerator $modelStubGenerator
+     * @param NamingTransformer $namingTransformer
+     * @param array $defaultPaths
+     */
+    public function __construct(
+        ControllerStubGenerator $controllerStubGenerator,
+        ModelStubGenerator $modelStubGenerator,
+        NamingTransformer $namingTransformer,
+        array $defaultPaths
+    ){
         $this->controllerStubGenerator = $controllerStubGenerator;
+        $this->modelStubGenerator = $modelStubGenerator;
         $this->namingTransformer = $namingTransformer;
         $this->defaultPaths = $defaultPaths;
     }
@@ -44,7 +58,11 @@ class ClassInitializer
 
         $this->checkClassExists($modelName, $fullPath);
 
-        Artisan::call("make:model {$modelPath}/{$modelName}");
+        $this->makeDirectoryOnPath($fullPath);
+
+        $content = $this->modelStubGenerator->generate($modelName, $modelPath);
+
+        File::put($fullPath, $content);
     }
 
     /**

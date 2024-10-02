@@ -17,8 +17,11 @@ class CRUDService
      * @param TemplateInitializer $templateInitializer
      * @param NamingTransformer $namingTransformer
      */
-    public function __construct(ClassInitializer $classInitializer, TemplateInitializer $templateInitializer, NamingTransformer $namingTransformer)
-    {
+    public function __construct(
+        ClassInitializer $classInitializer,
+        TemplateInitializer $templateInitializer,
+        NamingTransformer $namingTransformer
+    ){
         $this->classInitializer = $classInitializer;
         $this->templateInitializer = $templateInitializer;
         $this->namingTransformer = $namingTransformer;
@@ -28,8 +31,8 @@ class CRUDService
      * @param string $modelName
      * @param array $directoryPaths
      * @return void
-     * @throws TemplateFolderExistsException
      * @throws ClassExistsException
+     * @throws TemplateFolderExistsException
      */
     public function initStructure(string $modelName, array $directoryPaths): void
     {

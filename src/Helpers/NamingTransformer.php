@@ -6,6 +6,10 @@ use Illuminate\Support\Str;
 
 class NamingTransformer
 {
+    /**
+     * @param string $modelName
+     * @return string[]
+     */
     public function getArrayFileNames(string $modelName): array
     {
         return [
@@ -16,11 +20,20 @@ class NamingTransformer
         ];
     }
 
+    /**
+     * @param string $modelName
+     * @return string
+     */
     public function getTemplateDirectoryName(string $modelName): string
     {
         return $this->normalizeName($modelName, '-');
     }
 
+    /**
+     * @param string $modelName
+     * @param string $separator
+     * @return string
+     */
     protected function normalizeName(string $modelName, string $separator): string
     {
         $transformedName = preg_replace('/([A-Z])/', "$separator$1", $modelName);
